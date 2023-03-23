@@ -6,11 +6,11 @@ var score
 
 
 func new_game():
+	score = 0
 	get_tree().call_group("mobs", "queue_free")
 	$Music.play()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
-	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
@@ -57,3 +57,7 @@ func _on_score_timer_timeout():
 func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+
+
+func _on_music_finished():
+	$Music.play()
